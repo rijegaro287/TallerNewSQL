@@ -1,17 +1,29 @@
-const { database } = require("./databaseConnection")
+const {
+  selectEmpleadosQuery,
+  selectSucursalQuery,
+  selectProductoQuery
+} = require('./databaseQueries');
 
-const empleados = selectEmpleadosQuery()
+let empleados = []
+selectEmpleadosQuery()
+  .then((result) => empleados = result)
+  .then(() => {
+    console.log('-----------------> Empleados <-----------------');
+    console.log(empleados)
+  })
 
-console.log(empleados)
+let sucursales = []
+selectSucursalQuery()
+  .then((result) => sucursales = result)
+  .then(() => {
+    console.log('-----------------> Sucursales <-----------------');
+    console.log(sucursales)
+  })
 
-// empleados.forEach((empleado) => {
-//   console.log(empleado)
-// })
-
-async function selectEmpleadosQuery() {
-  const selectEmpleados = { sql: `SELECT * FROM Empleados` }
-
-  const [empleadoRows] = await database.run(selectEmpleados)
-
-  return empleadoRows
-}
+let productos = []
+selectProductoQuery()
+  .then((result) => productos = result)
+  .then(() => {
+    console.log('-----------------> Productos <-----------------');
+    console.log(productos)
+  })
