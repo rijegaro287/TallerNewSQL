@@ -1,0 +1,8 @@
+--> Descarga de Google Cloud CLI
+      https://cloud.google.com/sdk/docs/install
+
+--> Login desde Google Cloud CLI
+      gcloud auth application-default login
+
+--> Instalar cliente de Google Cloud Spanner en Node
+      npm install @google-cloud/spanner
